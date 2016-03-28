@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Fischer Click</string>
+    <string name="action_settings">Settings</string>
+    <string name="BOOMER">Boomer</string>
+    <string name="FISCHER_CLICK_TITLE">Fischer Click</string>
+    <string name="GO">Go</string>
+    <string name="TEMPO_PLAYLIST_SWITCH">Tempo or Play List</string>
+</resources>
