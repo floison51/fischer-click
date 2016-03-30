@@ -8,10 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.NumberPicker;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +20,14 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
         // init tempo picker
         final NumberPicker tempoPicker = ( NumberPicker ) findViewById( R.id.tempoPicker );
         tempoPicker.setMinValue( 20 );
@@ -97,13 +101,10 @@ public class MainActivity extends AppCompatActivity {
         // convert tempo to ms
         float fPeriodMs = 60 * 1000f / ( float ) tempo;
 
-        // half-period
-        float fHalfPeriodMs = fPeriodMs / 2f;
+        int periodMs = Math.round( fPeriodMs );
+        System.out.println( "tempo = " + tempo + ", ms = " + periodMs );
 
-        int halfPeriodMs = Math.round( fHalfPeriodMs );
-        System.out.println( "tempo = " + tempo + ", ms = " + halfPeriodMs );
-
-        timer.scheduleAtFixedRate( ctt, 0, halfPeriodMs );
+        timer.scheduleAtFixedRate(ctt, 0, periodMs);
 
     }
 
@@ -142,65 +143,4 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    private class ClickTimerTask extends TimerTask {
-
-
-        private final View beamClick;
-
-        public ClickTimerTask(View beamClick) {
-            super();
-            this.beamClick = beamClick;
-        }
-
-        @Override
-        public void run() {
-
-            System.out.println( "Click!" );
-            runOnUiThread(
-                new Runnable() {
-
-                    @Override
-                    public void run() {
-                        toggleVisibility(beamClick);
-                    }
-                }
-            );
-
-        }
-
-    }
-
-    private void toggleVisibility( View view ) {
-
-        // get visibility
-        int nextVisibility = 0;
-        int curVisibility = view.getVisibility();
-
-        switch ( curVisibility ) {
-
-            case View.VISIBLE: {
-
-                // hide
-                nextVisibility = View.INVISIBLE;
-                break;
-            }
-
-            case View.INVISIBLE: {
-
-                // hide
-                nextVisibility = View.VISIBLE;
-                break;
-            }
-
-            default: {
-                nextVisibility = View.VISIBLE;
-
-            }
-        }
-
-        view.setVisibility( nextVisibility );
-
-    }
-
 }

@@ -9,8 +9,13 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="click.android.sonak.fr.fisherclick.ClickActivity"
-    tools:showIn="@layout/activity_click">
+    tools:context="click.android.sonak.fr.fisherclick.ClickActivity">
+
+    <TableLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/contentLayout">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -22,11 +27,18 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <LinearLayout
+    <Switch
+        android:layout_height="wrap_content"
+        android:text="@string/PLAYLIST_SWITCH"
+        android:id="@+id/tempoPlayListSwitch"
+        android:layout_below="@+id/beamClick"
+        android:layout_gravity="left"
+    />
+
+    <TableLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignStart="@+id/beamClick"
         android:id="@+id/tempoPickerLayout">
 
         <NumberPicker
@@ -38,25 +50,16 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="49dp" />
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignStart="@+id/beamClick"
-            android:layout_alignParentEnd="false"
-            android:id="@+id/tempoPlayListSwitchLayout">
+    </TableLayout>
 
-            <Switch
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/TEMPO_PLAYLIST_SWITCH"
-                android:id="@+id/tempoPlayListSwitch"
-                android:layout_below="@+id/beamClick"
-                android:layout_centerHorizontal="true"
-                android:textAlignment="center"
-                android:textAllCaps="true" />
+    <TableLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/tempoPlayListLayout">
 
-        </LinearLayout>
-    </LinearLayout>
+    </TableLayout>
+
+    </TableLayout>
 
 </RelativeLayout>

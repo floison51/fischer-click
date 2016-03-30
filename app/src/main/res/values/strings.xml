@@ -4,5 +4,5 @@
     <string name="BOOMER">Boomer</string>
     <string name="FISCHER_CLICK_TITLE">Fischer Click</string>
     <string name="GO">Go</string>
-    <string name="TEMPO_PLAYLIST_SWITCH">Tempo or Play List</string>
+    <string name="PLAYLIST_SWITCH">Play List</string>
 </resources>
